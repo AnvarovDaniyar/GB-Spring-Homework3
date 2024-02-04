@@ -34,16 +34,12 @@ public class TaskController {
         return service.sortUsersByAge(service.getRepository().getUsers());
     }
 
-    //метод filterUsersByAge
-    //Подсказка  @GetMapping("/filter/{age}")
-    @GetMapping("/filter/{age}")
+    @GetMapping("/filter/{age}")//localhost:8080/tasks/filter/23
     public List<User> filterUsersByAge(@PathVariable("age") int age){
         return service.filterUsersByAge(service.getRepository().getUsers(),age);
     }
 
-    //метод calculateAverageAge
-    //Подсказка  @GetMapping("/calc")
-    @GetMapping("/calc")
+    @GetMapping("/calc")//localhost:8080/tasks/calc
     public double calculateAverageAge(){
         return service.calculateAverageAge(service.getRepository().getUsers());
     }
