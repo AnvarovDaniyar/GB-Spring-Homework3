@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Example3sem3hometaskApplication {
 
+	/**
+	 * Точка входа
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(Example3sem3hometaskApplication.class, args);
 	}

@@ -10,6 +10,13 @@ public class UserService {
 
     private NotificationService notificationService;
 
+    /**
+     * Метод создания нового пользователя
+     * @param name Имя
+     * @param age Возраст
+     * @param email E-mail
+     * @return Новый пользователь
+     */
     public User createUser(String name, int age, String email) {
         User user = new User();
         user.setName(name);

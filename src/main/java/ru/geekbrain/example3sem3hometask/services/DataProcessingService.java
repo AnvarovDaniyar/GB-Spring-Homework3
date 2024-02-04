@@ -5,10 +5,8 @@ import lombok.Getter;
 import org.springframework.stereotype.Service;
 import ru.geekbrain.example3sem3hometask.domain.User;
 import ru.geekbrain.example3sem3hometask.repository.UserRepository;
-
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Service
@@ -18,28 +16,37 @@ public class DataProcessingService {
 
     private UserRepository repository;
 
-
-    public List<User> sortUsersByAge(List<User> users) {
-        return users.stream()
-                .sorted(Comparator.comparing(User::getAge))
-                .collect(Collectors.toList());
+    /**
+     * Метод вызова сортировки по возрасту
+     * @return Список пользователей, отсортированный по возрасту
+     */
+    public List<User> sortUsersByAge() {
+        return repository.sortedUserByAge();
     }
 
-    public List<User> filterUsersByAge(List<User> users, int age) {
-        return users.stream()
-                .filter(user -> user.getAge() > age)
-                .collect(Collectors.toList());
+    /**
+     * Метод вызова фильтрации по возрасту
+     * @param age Возраст, старше которого выводятся пользователи
+     * @return Список пользователей, соответствующих условию
+     */
+    public List<User> filterUsersByAge(int age) {
+        return repository.filterUserByAge(age);
     }
 
-    public double calculateAverageAge(List<User> users) {
-        return users.stream()
-                .mapToInt(User::getAge)
-                .average()
-                .orElse(0);
+    /**
+     * Метод вызова вычисления среднего возраста
+     * @return Средний возраст пользователей
+     */
+    public double calculateAverageAge() {
+        return repository.averageAge();
     }
 
+    /**
+     * Метод вызова добавления пользователя
+     * @param user Новый пользователь
+     */
     public void  addUserToList(User user)
     {
-        repository.getUsers().add(user);
+        repository.save(user);
     }
 }

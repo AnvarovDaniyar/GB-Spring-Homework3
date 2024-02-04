@@ -18,6 +18,10 @@ public class TaskController {
 
     private DataProcessingService service;
 
+    /**
+     * Базовый метод вывода всех запросов
+     * @return список запросов
+     */
     @GetMapping
     public List<String> getAllTasks()
     {
@@ -28,19 +32,32 @@ public class TaskController {
         return  tasks;
     }
 
+    /**
+     * Ответ на запрос сортировки по возрасту
+     * @return Список пользователей, возраст которых больше указанного в запросе
+     */
     @GetMapping("/sort")//localhost:8080/tasks/sort
     public List<User> sortUsersByAge()
     {
-        return service.sortUsersByAge(service.getRepository().getUsers());
+        return service.sortUsersByAge();
     }
 
+    /**
+     * Ответ на запрос фильтрации по возрасту
+     * @param age Возраст, старше которого выводятся пользователи
+     * @return Список пользователей старше заданного возраста
+     */
     @GetMapping("/filter/{age}")//localhost:8080/tasks/filter/23
     public List<User> filterUsersByAge(@PathVariable("age") int age){
-        return service.filterUsersByAge(service.getRepository().getUsers(),age);
+        return service.filterUsersByAge(age);
     }
 
+    /**
+     * Ответ на запрос вычисления среднего возраста
+     * @return Средний возраст пользователей
+     */
     @GetMapping("/calc")//localhost:8080/tasks/calc
     public double calculateAverageAge(){
-        return service.calculateAverageAge(service.getRepository().getUsers());
+        return service.calculateAverageAge();
     }
 }

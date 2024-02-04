@@ -14,7 +14,13 @@ public class RegistrationService {
     private UserService userService;
     private NotificationService notificationService;
 
-
+    /**
+     *
+     * @param name Имя
+     * @param age Возраст
+     * @param email E-mail
+     * @return Строка успешного добавления пользователя
+     */
     public String processRegistration(String name, int age, String email){
         User newUser = userService.createUser(name, age, email);
         dataProcessingService.addUserToList(newUser);
