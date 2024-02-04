@@ -1,13 +1,13 @@
 # Spring
 ## Урок 3. Использование Spring для разработки серверного приложения
 ### Базовое задание:
-1) В класс RegistrationService добавить поля UserService, NotificationService(добавить в IOC контейнер аннотацией @Autowired или через конструктор класса)
+1) (Готово) В класс RegistrationService добавить поля UserService, NotificationService(добавить в IOC контейнер аннотацией @Autowired или через конструктор класса)
 2) Разработать метод processRegistration в котором:
    - создается пользователь из параметров метода
    - созданный пользователь добавляется в репозиторий
    - через notificationService выводится сообщение в консоль
-3) В TaskController добавить обработчики filterUsersByAge()(Подсказка @GetMapping("/filter/{age}")) и calculateAverageAge (Подсказка @GetMapping("/calc"))
-4) В методе filterUsersByAge параметр age получать через аннотацию @PathVariable
+3) (Готово) В TaskController добавить обработчики filterUsersByAge()(Подсказка @GetMapping("/filter/{age}")) и calculateAverageAge (Подсказка @GetMapping("/calc"))
+4) (Готово) В методе filterUsersByAge параметр age получать через аннотацию @PathVariable
 
 ### Задание "со звездочкой":
 1) В классе UserController добавить обработчик userAddFromParam извлекающий данные для создания пользователя из параметров HTTP запроса

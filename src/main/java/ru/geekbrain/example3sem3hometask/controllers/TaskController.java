@@ -43,6 +43,8 @@ public class TaskController {
 
     //метод calculateAverageAge
     //Подсказка  @GetMapping("/calc")
-//    @GetMapping("/calc")
-//    public
+    @GetMapping("/calc")
+    public double calculateAverageAge(){
+        return service.calculateAverageAge(service.getRepository().getUsers());
+    }
 }
