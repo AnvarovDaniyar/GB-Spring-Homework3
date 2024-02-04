@@ -22,6 +22,7 @@ public class UserController {
     @PostMapping("/body")//localhost:8080/users/body
     public String userAddFromBody(@RequestBody User user) {
         service.getDataProcessingService().getRepository().getUsers().add(user);
+        service.getNotificationService().notifyUser(user);
         return service.getNotificationService().sendNotification(user);
     }
 
