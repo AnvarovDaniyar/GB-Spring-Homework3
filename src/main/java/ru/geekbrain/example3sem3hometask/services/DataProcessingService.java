@@ -1,6 +1,7 @@
 package ru.geekbrain.example3sem3hometask.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 import ru.geekbrain.example3sem3hometask.domain.User;
 import ru.geekbrain.example3sem3hometask.repository.UserRepository;
@@ -9,13 +10,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
+@Getter
+@AllArgsConstructor
 public class DataProcessingService {
 
-    public UserRepository getRepository() {
-        return repository;
-    }
-    @Autowired
     private UserRepository repository;
 
 

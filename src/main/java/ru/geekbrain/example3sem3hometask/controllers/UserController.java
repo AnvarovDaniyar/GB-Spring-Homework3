@@ -1,16 +1,17 @@
 package ru.geekbrain.example3sem3hometask.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrain.example3sem3hometask.domain.User;
 import ru.geekbrain.example3sem3hometask.services.RegistrationService;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
+
     private RegistrationService service;
 
     @GetMapping

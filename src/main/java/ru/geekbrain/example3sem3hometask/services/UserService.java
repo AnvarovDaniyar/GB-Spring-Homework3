@@ -1,19 +1,14 @@
 package ru.geekbrain.example3sem3hometask.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrain.example3sem3hometask.domain.User;
 
+@AllArgsConstructor
 @Service
 public class UserService {
 
-    @Autowired
     private NotificationService notificationService;
-
-
-    //    public UserService(NotificationService notificationService) {
-    //        this.notificationService = notificationService;
-    //    }
 
     public User createUser(String name, int age, String email) {
         User user = new User();

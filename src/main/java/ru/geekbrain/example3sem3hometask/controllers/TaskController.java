@@ -1,6 +1,6 @@
 package ru.geekbrain.example3sem3hometask.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +11,11 @@ import ru.geekbrain.example3sem3hometask.services.DataProcessingService;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
-    @Autowired
     private DataProcessingService service;
 
     @GetMapping
