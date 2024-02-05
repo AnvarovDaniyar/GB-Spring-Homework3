@@ -24,17 +24,7 @@ public class UserRepository {
      */
     public List<User> findAll() {
         String sql = "SELECT * FROM userTable";
-
-        RowMapper<User> userRowMapper = (r, i) -> {
-            User rowObject = new User();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setName(r.getString("name"));
-            rowObject.setAge(r.getInt("age"));
-            rowObject.setEmail(r.getString("email"));
-            return rowObject;
-        };
-
-        return jdbc.query(sql, userRowMapper);
+        return jdbc.query(sql, newUserRowMapper());
     }
 
     /**
@@ -53,17 +43,7 @@ public class UserRepository {
      */
     public List<User> filterUserByAge(int age){
         String sql = "SELECT * FROM userTable WHERE age>?";
-
-        RowMapper<User> userRowMapper = (r, i) -> {
-            User rowObject = new User();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setName(r.getString("name"));
-            rowObject.setAge(r.getInt("age"));
-            rowObject.setEmail(r.getString("email"));
-            return rowObject;
-        };
-
-        return jdbc.query(sql, userRowMapper, age);
+        return jdbc.query(sql, newUserRowMapper(), age);
     }
 
     /**
@@ -73,16 +53,9 @@ public class UserRepository {
     public List<User> sortedUserByAge(){
         String sql = "SELECT * FROM userTable ORDER BY age";
 
-        RowMapper<User> userRowMapper = (r, i) -> {
-            User rowObject = new User();
-            rowObject.setId(r.getInt("id"));
-            rowObject.setName(r.getString("name"));
-            rowObject.setAge(r.getInt("age"));
-            rowObject.setEmail(r.getString("email"));
-            return rowObject;
-        };
 
-        return jdbc.query(sql, userRowMapper);
+
+        return jdbc.query(sql, newUserRowMapper());
     }
 
     /**
@@ -92,6 +65,21 @@ public class UserRepository {
     public Double averageAge(){
         String sql = "SELECT AVG(age) AS Average_Age FROM userTable";
         return jdbc.queryForObject(sql, Double.class);
+    }
+
+    /**
+     * Метод создания словаря пользователей
+     * @return Словарь пользователей
+     */
+    private RowMapper<User> newUserRowMapper(){
+        return (r, i) -> {
+            User rowObject = new User();
+            rowObject.setId(r.getInt("id"));
+            rowObject.setName(r.getString("name"));
+            rowObject.setAge(r.getInt("age"));
+            rowObject.setEmail(r.getString("email"));
+            return rowObject;
+        };
     }
 
 }

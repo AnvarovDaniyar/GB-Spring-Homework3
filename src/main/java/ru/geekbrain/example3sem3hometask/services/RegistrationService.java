@@ -15,7 +15,7 @@ public class RegistrationService {
     private NotificationService notificationService;
 
     /**
-     *
+     * Метод регистрации пользователя
      * @param name Имя
      * @param age Возраст
      * @param email E-mail
